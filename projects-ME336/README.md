@@ -1,6 +1,6 @@
 # ME336
 
-This is the project folder for course ME336, which is based on DeepClaw. The project consists of experimental earning contents from week06 to week16. We will release new contents in this folder before the class, so please visit the repository to get updated.
+This is the projects folder for course ME336, which is based on DeepClaw. The projects consist of experimental learning contents from week06 to week16. We will release new contents in this folder before the class, so please visit the repository to get updated.
 
 ## week06: Preparing the learning environment on your computer
 
