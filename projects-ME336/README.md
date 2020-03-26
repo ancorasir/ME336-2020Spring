@@ -7,23 +7,23 @@ This is the projects folder for course ME336, which is based on DeepClaw. The pr
 This week you are required to preparing the environment on your computer by installing all the required softwares. The guidelines are included in the subfolder [week06](./week06)
   - [ ] Install Linux
   - [ ] Practice Python
-  - [ ] PracticeJupyter
+  - [ ] Practice Jupyter
 
 ## week07: Install and learn tensorflow 2
   - [ ] Install tensorflow 2.x
   - [ ] Finish the basic usage tutorial on image learning.
 
 ## week08-week10: PyRep Simulation of TicTacToe
- - week08: 
+ - week08:
      - [ ] Install PyRep
      - [ ] Follow the tutorial to complete th kinematic Picking project.
 
- - week09: 
-     - [ ] Program a TicTacToe game using MDP or reinforcement learning methods. 
+ - week09:
+     - [ ] Program a TicTacToe game using MDP or reinforcement learning methods.
      - [ ] Play with the program on the screen.
 
- - week10: 
-     - [ ] Program the TicTacToe game in PyRep simulation. 
+ - week10:
+     - [ ] Program the TicTacToe game in PyRep simulation.
      - [ ] Provides complete video, codes and a 5-page report for the project.
 
 ## week11-week13: DesignAir Advanced - Waste Sorting
