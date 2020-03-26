@@ -66,9 +66,9 @@ The official tutorial is [here](https://docs.python.org/3/tutorial/index.html), 
 
 # TensorFlow Installation
 As [TensorFlow](https://pytorch.org/get-started/locally/#windows-anaconda)=2.x is not available from conda, we use pip to install it.
-> ``pip install tensorflow``
+> ``pip install tensorflow==2.0``
 > #if it's too slow, use other source like below    
-> ``pip install tensorflow -ihttps://pypi.tuna.tsinghua.edu.cn/simple/``
+> ``pip install tensorflow==2.0 -ihttps://pypi.tuna.tsinghua.edu.cn/simple/``
 
 <!--
 For [PyTorch](https://pytorch.org/get-started/locally/#windows-anaconda),
