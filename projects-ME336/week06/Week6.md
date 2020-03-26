@@ -1,5 +1,5 @@
 # How to install ubuntu
-
+[How to install ubuntu16.04](./how_install_ubuntu_16.04.md)
 # How to install anaconda
 Anaconda is the easiest way to perform Python/R data science and machine learning on Linux, Windows, and Mac OS X. With over 19 million users worldwide, it is the industry standard for developing, testing, and training on a single machine, enabling individual data scientists to:
 - Quickly download 7,500+ Python/R data science packages
@@ -64,13 +64,15 @@ Now, you can start your program. And you can follow the online [tutorials](https
 The official tutorial is [here](https://docs.python.org/3/tutorial/index.html), and a quick start is [here](https://www.liaoxuefeng.com/wiki/1016959663602400).
 
 
-# TensorFlow and PyTorch
+# TensorFlow Installation
 As [TensorFlow](https://pytorch.org/get-started/locally/#windows-anaconda)=2.x is not available from conda, we use pip to install it.
 > ``pip install tensorflow``
 > #if it's too slow, use other source like below    
 > ``pip install tensorflow -ihttps://pypi.tuna.tsinghua.edu.cn/simple/``
 
+<!--
 For [PyTorch](https://pytorch.org/get-started/locally/#windows-anaconda),
 >conda install pytorch torchvision cpuonly -c pytorch   
 >
 >conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+-->
