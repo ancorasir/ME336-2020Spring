@@ -1,6 +1,12 @@
-# How to install ubuntu
+# ME336-Wk06-Lab: Software Preparation
+In today's lab sessin, we will cover Python basics with Ubuntu installation as an optional step.
 
-[How to install ubuntu16.04](./how_to_install_ubuntu16.04.md)
+- Python basics: 
+  - You can refer to the following page for a quick instruction. 
+  - You can also refer to this link by [MIT DUSPviz](http://duspviz.mit.edu/tutorials/python_pandas/) for a quick tutorial. (Note that the Python tutorial link given in this tutorial is based on Python 2.0)
+  - I would recommend the tutorial by [Python](https://docs.python.org/3.6/tutorial/) and [Google](https://developers.google.com/edu/python/) as the main content for today's class. (Make sure you are using Python 3.6)
+- Ubuntu Installation (Optional): 
+  - Optionally, you can follow [a few steps](https://github.com/ancorasir/DesignAIR-ME336/blob/master/projects-ME336/week06/how_to_install_ubuntu16.04.md) to install Ubuntu 16.04 on your laptop. Always back up first, and it would be very helpful later with simulation and computation part. All lab content of ME336 has NOT been tested with Windows :(
 
 # How to install anaconda
 
