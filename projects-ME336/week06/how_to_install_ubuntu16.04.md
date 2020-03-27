@@ -1,4 +1,6 @@
-### Before installation
+The following is tested with a Miaomi Notebook. The steps should be similar to your laptop. Always backup files before doing the installation.
+
+# Before installation
 First, we need to ensure that the computer has space for the Ubuntu installation. Go to computer management (right-click computer). Right-click the C disk and choose the compress.   
 
 ![](./fig-disk-01.png)
@@ -25,7 +27,7 @@ Boot: Boot type: UEFI
 Then press F10 and Enter to restart the computer.    
 Then press F12 to enter a similar interface and choose your USB.
 
-### Ubuntu installation
+# Ubuntu installation
 Then enter the USB drive installation interface. Choose “install Ubuntu.”
 
 ![](./fig-u-01.png)
