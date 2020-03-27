@@ -1,5 +1,5 @@
 # How to install ubuntu
-[How to install ubuntu16.04](./how_install_ubuntu_16.04.md)
+[How to install ubuntu16.04](./how_to_install_ubuntu16.04.md)
 # How to install anaconda
 Anaconda is the easiest way to perform Python/R data science and machine learning on Linux, Windows, and Mac OS X. With over 19 million users worldwide, it is the industry standard for developing, testing, and training on a single machine, enabling individual data scientists to:
 - Quickly download 7,500+ Python/R data science packages
