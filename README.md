@@ -1,12 +1,15 @@
 # ME336
 This is the projects folder for course ME336, which is based on DeepClaw. The projects consist of experimental learning contents from week06 to week16. We will release new contents in this folder before the class, so please visit the repository to get updated. The task to be completed in each week is listed below. Please refer to the subfolders for more detailed instructions.
 
-## Folder: DeepClaw (fork from WangHK backbone)
+## DeepClaw (fork from WangHK backbone)
 
-## Folder: Simulation (GeS)
+DeepClaw[./DeepClaw] is a
 
-## Folder: Week 01~05 The Missing Semester by MIT (By LiuXB)
+## DesignAIR_simulation (GeS)
 
+The subfolder DesignAIR_simulation[./DesignAIR_simulation] contains all the source codes for robot simulations.
+
+## Week 01~05 The Missing Semester by MIT (By LiuXB)
 
 
 ## Week 06 Introduction to Python (By LiuXB)
