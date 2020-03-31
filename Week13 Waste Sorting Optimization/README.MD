@@ -9,57 +9,87 @@ The TensorFlow Object Detection API is an open source framework built on top of 
 
 ## Installation
 
-### Install dependencies using pip:
-
 ``` bash
+pip install tensorflow-gpu==1.15.0
 pip install Cython
 pip install contextlib2
 pip install pillow
 pip install lxml
-pip install matplotlib
-```
-<!-- common_typos_disable -->
-**Note**: sometimes "sudo apt-get install protobuf-compiler" will install
-Protobuf 3+ versions for you and some users have issues when using 3.5.
-If that is your case, try the [manual](#Manual-protobuf-compiler-installation-and-usage) installation.
-
-### COCO API installation
-
-Download the
-[cocoapi](https://github.com/cocodataset/cocoapi) and
-copy the pycocotools subfolder to the tensorflow/models/research directory if
-you are interested in using COCO evaluation metrics. The default metrics are
-based on those used in Pascal VOC evaluation. To use the COCO object detection
-metrics add `metrics_set: "coco_detection_metrics"` to the `eval_config` message
-in the config file. To use the COCO instance segmentation metrics add
-`metrics_set: "coco_mask_metrics"` to the `eval_config` message in the config
-file.
-
-```bash
-git clone https://github.com/cocodataset/cocoapi.git
-cd cocoapi/PythonAPI
-make
-cp -r pycocotools <path_to_tensorflow>/models/research/
+pip install matplotlib pycocotools
 ```
 
-### Manual protobuf-compiler installation and usage
-
-The Tensorflow Object Detection API uses Protobufs to configure model and
-training parameters. Before the framework can be used, the Protobuf libraries
-must be compiled. This should be done by running the following command from
-the DesignAIR-ME336 directory:
-
-```bash
-# From tensorflow/models/research/
-./bin/protoc object_detection/protos/*.proto --python_out=.
-```
-
-### Add Libraries to PYTHONPATH
-
-When running locally, the DesignAIR/ and DesignAIR/slim directories
-should be appended to PYTHONPATH. This can be done by adding the following line to ~/.bashrc
+When running locally, the ME336/Week13 Waste Sorting Optimization/ and ME336/Week13 Waste Sorting Optimization/slim directories should be appended to PYTHONPATH. This can be done by adding the following line to ~/.bashrc
 
 ``` bash
 # From tensorflow/models/research/
-export PYTHONPATH=$PYTHONPATH:`path-to-DesignAIR`:`path-to-DesignAIR`/slim
+export PYTHONPATH=$PYTHONPATH:`path-to-ME336/Week13 Waste Sorting Optimization`:`path-to-ME336/Week13 Waste Sorting Optimization`/slim
+```
+
+## Get Started
+
+### Preparing Dataset
+Download the training dataset in png format under recyclable and converting the dataset into tfrecord format. The codes will produce 5 files recyclable-trash-tfrecords-0*-of-05.tfrecord.
+
+``` bash
+# from ME336/Week13 Waste Sorting Optimization/Haihua-Trash-Data
+python create_recyclabletrash_tf_record.py \
+      --image_dir="simple_recyclable" \
+      --object_annotations_file="simple_recyclable/train.json" \
+      --output_file_prefix="recyclable-trash-tfrecords" \
+      --num_shards=5
+```
+
+Or you can download the tfrecord files directly from [Baidu Cloud Disk](https://pan.baidu.com/s/1phli_jXif7ozPMJ1Atv43Q)
+
+### Start train a waste detector using faster faster_rcnn
+Run the training script. The training configuration is in the file data_trash/faster_rcnn_resnet101_trash.config.
+``` bash
+# from ME336/Week13 Waste Sorting Optimization/object_detection
+python model_main.py \
+      --model_dir output \
+      --pipeline_config_path data_trash/faster_rcnn_resnet101_trash.config \
+      --num_train_steps 200000
+```
+
+### Monitor progress with tensorboard
+You can monitor progress of the training by running Tensorboard on your local machine:
+``` bash
+# ME336/Week13 Waste Sorting Optimization/object_detection
+tensorboard --logdir=output
+```
+Once Tensorboard is running, navigate to localhost:6006 from your favourite web browser. You should see something similar to the following:
+
+![](object_detection/g3doc/img/tensorboard_.png)
+
+### Exporting the Tensorflow Graph
+After your model has been trained, you should export it to a Tensorflow graph proto. First, you need to identify a candidate checkpoint to export under output folder. The checkpoint will typically
+consist of three files:
+
+* `model.ckpt-${CHECKPOINT_NUMBER}.data-00000-of-00001`
+* `model.ckpt-${CHECKPOINT_NUMBER}.index`
+* `model.ckpt-${CHECKPOINT_NUMBER}.meta`
+
+Run the following command from ME336/Week13 Waste Sorting Optimization/object_detection
+```bash
+python export_inference_graph.py \
+    --input_type image_tensor \
+    --pipeline_config_path data_trash/faster_rcnn_resnet101_trash.config \
+    --trained_checkpoint_prefix output/model.ckpt-200000 \
+    --output_directory exported_graphs
+```
+Afterwards, you should see a directory named `exported_graphs` containing the
+SavedModel and frozen graph.
+
+### Run a realtime detector using realsense
+Congratulations, you have now trained an object detector for waste sorting. Next, we will test the exported model using realtime image stream from realsense.
+
+Following the instructions to install [SDK](https://www.intelrealsense.com/sdk-2/) for realsense and install the python dependency.
+``` bash
+pip install pyrealsense
+```
+
+Connect the realsense D435 to your computer and run the following command
+``` bash
+# ME336/Week13 Waste Sorting Optimization/object_detection
+python object_detection_realsense.py
 ```
