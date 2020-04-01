@@ -1,6 +1,9 @@
-# Week 07 Introduction to TensorFlow
+# Week 07 Introduction to TensorFlow  <!-- omit in toc -->
 In today's lab session, we will introduce some widely used deep learning frameworks. Among them, we adopt tensorflow as the frame for ME336. We will go through two tutorials, mnist tutorial from google's course "Tensorflow Without a PhD" and fashion-mnist from tensorflow's official documentation.
 
+- [Deep Learning Frameworks:](#deep-learning-frameworks)
+- [TensorFlow Tutorial-1: Tensorflow Without a PhD](#tensorflow-tutorial-1-tensorflow-without-a-phd)
+- [TensorFlow Tutorial-2: Fasion mnist](#tensorflow-tutorial-2-fasion-mnist)
 
 ## [Deep Learning Frameworks](https://developer.nvidia.com/deep-learning-frameworks):
  Deep learning frameworks offer building blocks for designing, training and validating deep neural networks, through a high level programming interface. Following is a list of popular deep learning frameworks:
