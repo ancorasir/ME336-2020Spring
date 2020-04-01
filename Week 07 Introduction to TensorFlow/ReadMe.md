@@ -60,8 +60,8 @@ In today's lab session, we will introduce some widely used deep learning framewo
   cd DesignAIR-ME336/Week 07 Introduction to TensorFlow
   jupyter notebook
   ```
-
-  If you don't see you tf2.0 environment in jupyter notebook, please follow the (instructions in week 6)[https://github.com/bionicdl-sustech/ME336/tree/master/Week%2006%20Introduction%20to%20Python#environment-in-jupyter-notebook]
+ 
+  **Note:** If you don't see you tf2.0 environment in jupyter notebook, please follow the [instructions in week 6](https://github.com/bionicdl-sustech/ME336/tree/master/Week%2006%20Introduction%20to%20Python#environment-in-jupyter-notebook).
 
 <!--
 - [TensorFlow Basics](https://www.guru99.com/tensor-tensorflow.html): Tensor, Shape, Type, Graph, Sessions & Operators
