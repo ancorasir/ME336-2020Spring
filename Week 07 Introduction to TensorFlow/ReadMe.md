@@ -17,7 +17,7 @@ In today's lab session, we will introduce some widely used deep learning framewo
   - [PaddlePaddle](https://www.paddlepaddle.org.cn/): PaddlePaddle provides an intuitive and flexible interface for loading data and specifying model structures. It supports CNN, RNN, multiple variants and configures complicated deep models easily.
 
   ## TensorFlow Tutorial-1: Tensorflow Without a PhD
-  Tensorflow and deep learning without a PhD series is a crash course in six episodes for software developers who want to learn machine learning, with examples, theoretical concepts, and engineering tips, tricks and best practices to build and train the neural networks that solve your problems. All the resources including video, slides, code can be found on the [github page](https://github.com/GoogleCloudPlatform/tensorflow-without-a-phd)
+  Tensorflow and deep learning without a PhD series is a crash course in six episodes for software developers who want to learn machine learning, with examples, theoretical concepts, and engineering tips, tricks and best practices to build and train the neural networks that solve your problems. All the resources including video, slides, code can be found on the [github page](https://github.com/GoogleCloudPlatform/tensorflow-without-a-phd).
 
   In order to have a clearer idea of constructing neural network in tensorflow, it is recommended to use their earlier codes, which is also explained in their slides. The earlier codes is compatible with tensorflow 1.15. Note the software version compatibility is a issue we will face often, that the reason we use anaconda. Please follow the following instructions to set the environment:
 
@@ -46,7 +46,7 @@ In today's lab session, we will introduce some widely used deep learning framewo
 
   ## TensorFlow Tutorial-2: Fasion mnist
 
-  Fashion-MNIST is a dataset consisting of a training set of 60,000 examples and a test set of 10,000 examples. Please go to the [github page](https://github.com/zalandoresearch/fashion-mnist#get-the-data) for more detailed information. The Fasion mnist code is also included ME336 and can be run with tensorflow 2.0. Follow the instructions below to install and run it in a new environment.
+  Fashion-MNIST is a dataset consisting of a training set of 60,000 examples and a test set of 10,000 examples. Please go to the [github page](https://github.com/zalandoresearch/fashion-mnist#get-the-data) for more detailed information. The Fasion mnist code is already included in ME336 and can be run with tensorflow 2.0. Follow the instructions below to install and run it in a new environment.
   ```bash
   # Create a conda environment with tensorflow 1.15
   conda create --name tf2.0 python=3.7
@@ -61,7 +61,12 @@ In today's lab session, we will introduce some widely used deep learning framewo
   jupyter notebook
   ```
 
+  ---
+  **NOTE**
 
+  If you don't see you tf2.0 environment in jupyter notebook, please follow the (instructions in week 6)[https://github.com/bionicdl-sustech/ME336/tree/master/Week%2006%20Introduction%20to%20Python#environment-in-jupyter-notebook]
+
+  ---
 <!--
 - [TensorFlow Basics](https://www.guru99.com/tensor-tensorflow.html): Tensor, Shape, Type, Graph, Sessions & Operators
 - Tutorials: the examples are handwritten digits classification and image classification. The datasets used is [MNIST]((http://yann.lecun.com/exdb/mnist/)) and [FASHION MNIST](https://github.com/zalandoresearch/fashion-mnist#get-the-data), and they have been downloaded as mnist.npz and Fashion-MNIST in week07 folder.
