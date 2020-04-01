@@ -61,12 +61,8 @@ In today's lab session, we will introduce some widely used deep learning framewo
   jupyter notebook
   ```
 
-  ---
-  **NOTE**
-
   If you don't see you tf2.0 environment in jupyter notebook, please follow the (instructions in week 6)[https://github.com/bionicdl-sustech/ME336/tree/master/Week%2006%20Introduction%20to%20Python#environment-in-jupyter-notebook]
 
-  ---
 <!--
 - [TensorFlow Basics](https://www.guru99.com/tensor-tensorflow.html): Tensor, Shape, Type, Graph, Sessions & Operators
 - Tutorials: the examples are handwritten digits classification and image classification. The datasets used is [MNIST]((http://yann.lecun.com/exdb/mnist/)) and [FASHION MNIST](https://github.com/zalandoresearch/fashion-mnist#get-the-data), and they have been downloaded as mnist.npz and Fashion-MNIST in week07 folder.
