@@ -25,7 +25,7 @@ In today's lab session, we will introduce some widely used deep learning framewo
   pip install tensorflow==1.15 matplotlib==3.0.3
   ```
 
-  Go to the ME336 foler and update to the lastest code.
+  Go to the ME336 foler and update to the lastest code. For this week, the students are required to go through mnist_1.0_softmax.py first, which corresponds to the first 16 pages in the [slide](https://www.slideshare.net/albertspijkers/martin-gorner-tensorflow-and-deep-learning-without-a-phd). We will cover the other examples in the following week.
   ```bash
   # Pull the lastest ME336 code
   cd DesignAIR-ME336
