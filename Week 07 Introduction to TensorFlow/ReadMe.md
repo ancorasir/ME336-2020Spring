@@ -1,5 +1,5 @@
 # Week 07 Introduction to TensorFlow
-In today's lab session, we will introduce some widely used deep learning frameworks, and run tutorials of tensorflow.
+In today's lab session, we will introduce some widely used deep learning frameworks. Among them, we adopt tensorflow as the frame for ME336. We will go through two tutorials, mnist tutorial from google's course "Tensorflow Without a PhD" and fashion-mnist from tensorflow's official documentation.
 
 
 ## [Deep Learning Frameworks](https://developer.nvidia.com/deep-learning-frameworks):
@@ -13,8 +13,47 @@ In today's lab session, we will introduce some widely used deep learning framewo
   - [Chainer](https://chainer.org/): Chainer is a Python-based deep learning framework aiming at flexibility.
   - [PaddlePaddle](https://www.paddlepaddle.org.cn/): PaddlePaddle provides an intuitive and flexible interface for loading data and specifying model structures. It supports CNN, RNN, multiple variants and configures complicated deep models easily.
 
-  ## TensorFlow Tutorials
-  The official tutorial of tensorflow is [here](https://www.tensorflow.org/tutorials). And we get a quick start from MNIST referring to [here](https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/#0) step by step.
+  ## TensorFlow Tutorial-1: Tensorflow Without a PhD
+  Tensorflow and deep learning without a PhD series is a crash course in six episodes for software developers who want to learn machine learning, with examples, theoretical concepts, and engineering tips, tricks and best practices to build and train the neural networks that solve your problems. All the resources including video, slides, code can be found on the [github page](https://github.com/GoogleCloudPlatform/tensorflow-without-a-phd)
+
+  In order to have a clearer idea of constructing neural network in tensorflow, it is recommended to use their earlier codes, which is also explained in their slides. The earlier codes is compatible with tensorflow 1.15. Note the software version compatibility is a issue we will face often, that the reason we use anaconda. Please follow the following instructions to set the environment:
+
+  ```bash
+  # Create a conda environment with tensorflow 1.15
+  conda create --name tf1.15 python=3.7
+  conda activate tf1.15
+  pip install tensorflow==1.15 matplotlib==3.0.3
+  ```
+
+  Go to the ME336 foler and update to the lastest code.
+  ```bash
+  # Pull the lastest ME336 codes
+  cd DesignAIR-ME336
+  git pull
+  cd  Week 07 Introduction to TensorFlow/tensorflow-without-a-phd/tensorflow-mnist-tutorial
+  python mnist_1.0_softmax.py
+  ```
+
+  Deactivate the tf1.15 environment when finish the tutorial
+  ```bash
+  conda deactivate
+  ```
+
+  ## TensorFlow Tutorial-2: Fasion mnist
+
+  Fashion-MNIST is a dataset consisting of a training set of 60,000 examples and a test set of 10,000 examples. Please go to the [github page](https://github.com/zalandoresearch/fashion-mnist#get-the-data) for more detailed information. The Fasion mnist code is also included ME336 and can be run with tensorflow 2.0. Follow the instructions below to install and run it in a new environment.
+  ```bash
+  # Create a conda environment with tensorflow 1.15
+  conda create --name tf2.0 python=3.7
+  conda activate tf2.0
+  pip install tensorflow==2.0 matplotlib
+  # Install the following package so that you can use tf2.0 in jupyter notebook
+  conda install nb_conda_kernels
+
+  # Run jupyter notebook, and remember to choose tf2.0 as the kernal after you open Fashion_mnist.ipynb
+  cd DesignAIR-ME336/Week 07 Introduction to TensorFlow
+  jupyter notebook
+  ```
 
 
 <!--
