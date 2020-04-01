@@ -27,10 +27,12 @@ In today's lab session, we will introduce some widely used deep learning framewo
 
   Go to the ME336 foler and update to the lastest code.
   ```bash
-  # Pull the lastest ME336 codes
+  # Pull the lastest ME336 code
   cd DesignAIR-ME336
   git pull
   cd  Week 07 Introduction to TensorFlow/tensorflow-without-a-phd/tensorflow-mnist-tutorial
+
+  # Run the example
   python mnist_1.0_softmax.py
   ```
 
@@ -47,6 +49,7 @@ In today's lab session, we will introduce some widely used deep learning framewo
   conda create --name tf2.0 python=3.7
   conda activate tf2.0
   pip install tensorflow==2.0 matplotlib
+
   # Install the following package so that you can use tf2.0 in jupyter notebook
   conda install nb_conda_kernels
 
