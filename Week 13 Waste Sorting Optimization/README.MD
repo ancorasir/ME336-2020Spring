@@ -1,13 +1,14 @@
 # Training a Waste Detector in tensorflow
 
-## Recyclable dataset
+## Recyclable Dataset
 The dataset is collection of 14122 images and four categories of glass, paper, metal and platistic. The detailed informaiton can be found in the folder [Haihua-Trash-Data](./Haihua-Trash-Data). You can Download the dataset in png format and in tfrecord format from [Baidu Cloud Disk](https://pan.baidu.com/s/1phli_jXif7ozPMJ1Atv43Q). Please contact us for the access code if you want to use the dataset.
 
-## Tensorflow Object Detector API
-The TensorFlow Object Detection API is an open source framework built on top of TensorFlow that makes it easy to construct, train and deploy object detection models.
+## Tensorflow Object Detection API
+The TensorFlow Object Detection API is an open source framework built on top of TensorFlow that makes it easy to construct, train and deploy object detection models. The original website is [here](https://github.com/tensorflow/models/tree/master/research/object_detection)
 
+Since some of the models in this API are not updated with the tensorflow 2.0 release. We'll use tensorflow 1.15 for the waste sorting projects so that we can make use of the model zoo.
 
-## Installation
+### Installation
 
 ``` bash
 pip install tensorflow-gpu==1.15.0
@@ -41,8 +42,14 @@ python create_recyclabletrash_tf_record.py \
 
 Or you can download the tfrecord files directly from [Baidu Cloud Disk](https://pan.baidu.com/s/1phli_jXif7ozPMJ1Atv43Q)
 
-### Start train a waste detector using faster faster_rcnn
-Run the training script. The training configuration is in the file data_trash/faster_rcnn_resnet101_trash.config.
+### Start train a waste detector using faster rcnn
+We finetune a faster rcnn model provided by the API. First Download the pretrained checkpoint and extract it.
+``` bash
+wget http://download.tensorflow.org/models/object_detection/faster_rcnn_resnet101_coco_2018_01_28.tar.gz
+tar -xvf faster_rcnn_resnet101_coco_2018_01_28.tar.gz
+```
+
+Run the training script. The training configuration is in the file data_trash/faster_rcnn_resnet101_trash.config. Hyper parameters like number of classes, batch_size, learning rate, and training steps can be specified here.
 ``` bash
 # from ME336/Week13 Waste Sorting Optimization/object_detection
 python model_main.py \
@@ -51,7 +58,7 @@ python model_main.py \
       --num_train_steps 200000
 ```
 
-### Monitor progress with tensorboard
+### Monitor progress with Tensorboard
 You can monitor progress of the training by running Tensorboard on your local machine:
 ``` bash
 # ME336/Week13 Waste Sorting Optimization/object_detection
@@ -93,3 +100,7 @@ Connect the realsense D435 to your computer and run the following command
 # ME336/Week13 Waste Sorting Optimization/object_detection
 python object_detection_realsense.py
 ```
+
+## TODOs
+
+You are required to finetune your own model probablely from the [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md).
