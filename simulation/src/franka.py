@@ -1,9 +1,10 @@
 from pyrep.robots.arms.panda import Panda
+from pyrep.robots.end_effectors.panda_gripper import PandaGripper
 from pyrep.robots.configuration_paths.arm_configuration_path import ArmConfigurationPath
 from pyrep.errors import ConfigurationError, ConfigurationPathError, IKError
 from pyrep.const import ConfigurationPathAlgorithms as Algos
 from typing import List, Union
-
+import copy
 import numpy as np
 from scipy.optimize import minimize
 from scipy.spatial.transform import Rotation as R
@@ -22,6 +23,27 @@ class Franka(Panda):
         self.kine = FrankaKinematics()
         self.position_min = [0.8, -0.3, 0.83]
         self.position_max = [1.0, 0.3, 1.2]
+        self.gripper = PandaGripper()
+
+    def grasp(self,env,obj:None):
+        '''
+        gripper grasp
+        '''
+        while not self.gripper.actuate(0.0,0.1):
+            env.step()
+        if obj is not None:
+            self.grasped_obj = obj
+            self.gripper.grasp(obj)
+
+    def release(self,env):
+        '''
+        gripper open
+        '''
+        while not self.gripper.actuate(1.0,0.1):
+            env.step()
+        if self.grasped_obj is not None:
+            self.gripper.release()
+            self.grasped_obj = None
 
     def _rot_value(self,euler: Union[List[float], np.ndarray] = None,
                     quaternion: Union[List[float], np.ndarray] = None):
@@ -69,9 +91,10 @@ class Franka(Panda):
         #self.move_j(q_target)
 
     def move_j(self,q_target,env):
-        q_target[6] += np.pi/4
+        _q_target = copy.copy(q_target)
+        _q_target[6] += np.pi/4
         q_start = np.array(self.get_joint_positions())
-        dq = (q_target - q_start)/self.path_point_nums
+        dq = (_q_target - q_start)/self.path_point_nums
         res = []
         for i in range(self.path_point_nums):
             res.append(q_start + dq * i)
