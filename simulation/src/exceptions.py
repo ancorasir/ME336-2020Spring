@@ -1,2 +1,0 @@
-class IkError(BaseException):
-    pass
