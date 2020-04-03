@@ -7,7 +7,7 @@ PyRep is a toolkit for robot learning research, built on top of CoppeliaSim (pre
 
 - [Install CoppeliaSim](#Install-CoppeliaSim)
 - [Install PyRep](#Install-PyRep)
-- [Project 1: Vision-guided Picking in PyRep](#Project-1:-Vision-guided-Picking-in-PyRep)
+- [Project 1: Kinematic Picking in PyRep](#Project-1:-Kinematic-Picking-in-PyRep)
 
 ## Install CoppeliaSim
 Dependency: Ubuntu; Python3.6 or higher; Git.
