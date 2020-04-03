@@ -1,9 +1,13 @@
-# Week 08 Introduction to CoppeliaSim(V-rep) and PyRep
-In week 08, we will learn how to use CoppeliaSim to simulate kinematic picking.
+# Week 08 Introduction to CoppeliaSim (V-REP) and PyRep
+In week 08, we will learn how to use CoppeliaSim and PyRep to complete your Project 1: Vision-guided Picking in PyRep.
 
 The robot simulator CoppeliaSim, with integrated development environment, is based on a distributed control architecture: each object/model can be individually controlled via an embedded script, a plugin, a ROS or BlueZero node, a remote API client, or a custom solution. This makes CoppeliaSim very versatile and ideal for multi-robot applications. Controllers can be written in C/C++, Python, Java, Lua, Matlab or Octave.
 
 PyRep is a toolkit for robot learning research, built on top of CoppeliaSim (previously called V-REP).
+
+- [Install CoppeliaSim](#Install-CoppeliaSim)
+- [Install PyRep](#Install-PyRep)
+- [Project 1: Vision-guided Picking in PyRep](#Project-1:-Vision-guided-Picking-in-PyRep)
 
 ## Install CoppeliaSim
 Dependency: Ubuntu; Python3.6 or higher; Git.
@@ -27,7 +31,8 @@ The students are suggested to create a new conda environment for PyRep.
 ```bash
 conda create --name pyrep python=3.7
 conda activate pyrep
-# run the code to check if qt is installed under pyrep env. You should get nothing after running the following line. Otherwise, refer to the note to remove the qt under pyrep env
+# run the code to check if qt is installed under pyrep env.
+# You should get nothing after running the following line. Otherwise, refer to the note to remove the qt under pyrep env
 conda list | grep 'qt'
 ```
 
@@ -55,7 +60,10 @@ You should be good to go! Try running one of the examples in the examples/ folde
 cd examples
 python example_panda_reach_target.py
 ```
-**Note:** You  might encounter the qt version problem. The CoppeliaSim uses its own qt library in its root folder. In case your system find other qt installation under anaconda, you need to remove that qt library and reinstall PyRep. Remember to remove the /build folder every time you want to reinstall PyRep. Refer to [this issue](https://github.com/stepjam/PyRep/issues/76)
+**Note:** You  might encounter the qt version problem. The CoppeliaSim uses its own qt library in its root folder. In case your system find other qt installation under anaconda, you need to remove that qt library and reinstall PyRep. Remember to remove the /build folder every time you want to reinstall PyRep. Refer to [this issue](https://github.com/stepjam/PyRep/issues/76).
 
 You should see the following window pop out:
 ![](exmple_panda_reach_target.png)
+
+## Project 1: Kinematic Picking in PyRep
+This project aims to build a robot arm with camera in simulation and complete a picking task based on pre-defined waypoints. Please go to the [Simulation](../Simulation) directory for the code and instructions.
