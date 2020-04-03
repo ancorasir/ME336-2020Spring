@@ -2,8 +2,8 @@
 We will do our project 1 and project 2 in simulation. This folder contains all the code and instructions to complete the two projects.
 
 - [File Structure](#File-Structure)
-- [Project 1: Kinematic Picking in PyRep](#Project-1:-Kinematic-Picking-in-PyRep)
-- [Project 2: Simulated Robot Player](#Project-2:-Simulated-Robot-Player)
+- [Project 1: Kinematic Picking in PyRep](#Project-1-Kinematic-Picking-in-PyRep)
+- [Project 2: Simulated Robot Player](#Project-2-Simulated-Robot-Player)
 
 ## File Structure
 
