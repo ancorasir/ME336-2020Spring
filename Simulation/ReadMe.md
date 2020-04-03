@@ -7,11 +7,11 @@ We will do our project 1 and project 2 in simulation. This folder contains all t
 
 ## File Structure
 
-- /scene : stores all the v-rep scene files ended with ".ttt"
-- /src: backend python code put here
-- /tasks:
-  - /BaseScene_test: test scene file and backend code
-  - /Kine_picking: simulate kinematic picking
+- /scene[./scene]: stores all the v-rep scene files ended with ".ttt"
+- /src[./src]: backend python code put here
+- /tasks[./tasks]:
+  - /BaseScene_test[./tasks/BaseScene_test]: test scene file and backend code
+  - /Kine_picking[./tasks/Kine_picking]: simulate kinematic picking
 
 ## Project 1: Kinematic Picking in PyRep
 ### Getting Started
@@ -75,7 +75,10 @@ After complete the Kinematic Picking example, you are required to generate a pat
 
 For example, the letter "C" can be seen as part of an ellipse curve. After specify the center, major axis and minor axis, you can obtain the path from the ellipse curve equation.
 
-Please submit a power point, video of the simulation and code in one week.
+Please submit the following materials in one week:
+  - A power point describing your project, 
+  - A video of the simulation,
+  - The COVID-19.py file.
 
 ## Project 2: Simulated Robot Player
 
