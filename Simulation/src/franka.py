@@ -24,7 +24,8 @@ class Franka(Panda):
         self.position_min = [0.8, -0.3, 0.83]
         self.position_max = [1.0, 0.3, 1.2]
         self.gripper = PandaGripper()
-
+        self.clear_path = False
+        
     def grasp(self,env,obj:None):
         '''
         gripper grasp
@@ -123,7 +124,9 @@ class Franka(Panda):
         while not done:
             done = path.step()
             env.step()
-            
+        if self.clear_path:
+            path.clear_visualization()
+
     def go_to_position(self,position: Union[List[float], np.ndarray],
                             euler: Union[List[float], np.ndarray] = None,
                             quaternion: Union[List[float], np.ndarray] = None) -> ArmConfigurationPath:

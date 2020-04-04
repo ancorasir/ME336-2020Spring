@@ -1,9 +1,13 @@
 # PyRep Simulation
 We will do our project 1 and project 2 in simulation. This folder contains all the code and instructions to complete the two projects.
 
-- [File Structure](#File-Structure)
-- [Project 1: Kinematic Picking in PyRep](#Project-1-Kinematic-Picking-in-PyRep)
-- [Project 2: Simulated Robot Player](#Project-2-Simulated-Robot-Player)
+- [PyRep Simulation](#pyrep-simulation)
+  - [File Structure](#file-structure)
+  - [Project 1: Kinematic Picking in PyRep](#project-1-kinematic-picking-in-pyrep)
+    - [Getting Started](#getting-started)
+    - [Explanation of the main code](#explanation-of-the-main-code)
+    - [TODO: your assignment](#todo-your-assignment)
+  - [Project 2: Simulated Robot Player](#project-2-simulated-robot-player)
 
 ## File Structure
 
@@ -27,13 +31,12 @@ python main.py
 
 ### Explanation of the main code
 
-
-  ``` python
-  # Import modules to be used in the project
-  from src.camera import Camera
-  from src.env import Env
-  from src.franka import Franka
-  ```
+```python
+# Import modules to be used in the project
+from src.camera import Camera
+from src.env import Env
+from src.franka import Franka
+```
 
 Environment:
 
