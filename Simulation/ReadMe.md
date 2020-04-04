@@ -1,5 +1,5 @@
 # PyRep Simulation
-We will do our project 1 and project 2 in simulation. This folder contains all the code and instructions to complete the two projects.
+We will do our project 1 Kinematic Picking in PyRep and project 2 Simulated Robot Player in simulation. The Simulation folder contains all the code and instructions to complete the two projects.
 
 - [PyRep Simulation](#pyrep-simulation)
   - [File Structure](#file-structure)
@@ -11,11 +11,11 @@ We will do our project 1 and project 2 in simulation. This folder contains all t
 
 ## File Structure
 
-- /scene[./scene]: stores all the v-rep scene files ended with ".ttt"
-- /src[./src]: backend python code put here
-- /tasks[./tasks]:
-  - /BaseScene_test[./tasks/BaseScene_test]: test scene file and backend code
-  - /Kine_picking[./tasks/Kine_picking]: simulate kinematic picking
+- [/scene](./scene): stores all the v-rep scene files ended with ".ttt"
+- [/src](./src): backend python code put here
+- [/tasks](./tasks):
+  - [/BaseScene_test](./tasks/BaseScene_test): test scene file and backend code
+  - [/Kine_picking](./tasks/Kine_picking): simulate kinematic picking
 
 ## Project 1: Kinematic Picking in PyRep
 ### Getting Started
