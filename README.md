@@ -51,15 +51,15 @@ The learning goals are listed below:
 
 ## Week 11 Introduction to DesignAIR (GeS+LiuXB)
 
-- [ ] Read the instrctions on how to use DesignAir
+- [ ] Read the instructions on how to use DesignAir
 - [ ] Complete the Arcade Claw machine tutorial
 
-## Week 12 Arcade Claw Player (GeS+LiuXB)
+## Week 12 Waste Sorting Optimization (GeS+LiuXB)
 
 - [ ] Download and get familiar with the recycling trash dataset
 - [ ] Finetune a detection model in tensorflow to classify and localize the trash.
 
-## Week 13 Waste Sorting Optimization (GeS+LiuXB)
+## Week 13 Waste Sorting Robot (GeS+LiuXB)
 
 - [ ] Test the detection model on hardware with Franka and realsense
 
