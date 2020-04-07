@@ -22,8 +22,8 @@ if __name__ == '__main__':
     # open v-rep and launch BaseScene.ttt file
     env = Env(scene('Kine_picking.ttt'))
     # start simulation
-    env.set_simulation_timestep(0.1)
-    env.step_ui()
+    # env.set_simulation_timestep(0.1)
+    # env.step_ui()
     env.start()
 
     # franka
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     
     # cam 
     cam = Camera()
-
+    '''
     # target_plane, cylinder, cubic 
     target_plane = Shape('plane')
     cubic = Shape('obj0')
@@ -66,9 +66,58 @@ if __name__ == '__main__':
     target_plane_position[2] += 0.1
     input('Press enter to transport the object to target position')
     franka.move(env,target_plane_position,euler=[0,np.radians(180),0])
-
+    '''
     # TODO: generate a path looks like the letters in "COVID-19"
-        
+    x,y,z = franka.get_position()
+    '''
+    rotate along Y axis 45 degrees
+    and move to robot frame
+    '''
+    rotation = np.array([
+        [np.cos(np.pi/4),0,np.sin(np.pi/4),x],
+        [0,1,0,y],
+        [-np.sin(np.pi/4),0,np.cos(np.pi/4),z],
+        [0,0,0,1]
+    ])
+    '''
+    letter_range
 
+      0.4
+    -------
+    |     |
+    |  *  | 0.2 ----> y
+    |     |
+    -------
+       |
+       |
+       | x
+
+    z = 0.7
+    
+    letter_range=[
+        [-0.2,0.1,0.7,1],
+        [-0.2,-0.1,0.7,1],
+        [0.2,-0.1,0.7,1],
+        [0.2,0.1,0.7,1],
+        [-0.2,0.1,0.7,1]
+    ]
+    '''
+    letter_c_targets = [
+        [-0.1,0.1,0.7,1],
+        [-0.2,0,0.7,1],
+        [-0.1,-0.1,0.7,1],
+        [0.1,-0.1,0.7,1],
+        [0.2,0,0.7,1],
+        [0.1,0.1,0.7,1]
+    ]
+
+    for i,p in enumerate(letter_c_targets):
+        if(i==0):
+            franka.clear_path = True
+        else:
+            franka.clear_path = False
+        rp = rotation@np.array(p)
+        franka.move(env,rp[:3],euler=[0,np.radians(180),0])
+    franka.home(env)
     env.stop()
     env.shutdown()
