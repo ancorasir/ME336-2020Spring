@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # set franka to home joints 
     franka.home(env)
 
-    # TODO: generate a path looks like the letters in "COVID-19"
+    # TODO: generate a series of waypoints form the letters in "KINEMATICS"
     x,y,z = franka.get_position()
     '''
     rotate along Y axis 45 degrees
@@ -42,7 +42,7 @@ if __name__ == '__main__':
         [0,0,0,1]
     ])
     '''
-    letter_range
+    letter_range: the letters should be within the bounding box below
 
       0.2
     -------
@@ -63,6 +63,7 @@ if __name__ == '__main__':
         [0.15,0.1,0.7,1],
     ]
     '''
+    # TODO: here we give an example of letter "I", your task is to form a letter from "KINEMATICS"
     letter_I_targets = [
         [-0.15,-0.1,0.7,1],
         [-0.15,0.1,0.7,1],
