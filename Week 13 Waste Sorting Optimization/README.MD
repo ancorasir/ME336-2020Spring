@@ -11,7 +11,14 @@ Since some of the models in this API are not updated with the tensorflow 2.0 rel
 ### Installation
 
 ``` bash
+# Create a conda environment with tensorflow 1.15, skip this step if you have created before
+conda create --name tf1.15 python=3.7
+# Use tensorflow==1.15.0 if you don't have GPU on your computer
 pip install tensorflow-gpu==1.15.0
+```
+
+``` bash
+# Install dependency
 pip install Cython
 pip install contextlib2
 pip install pillow
