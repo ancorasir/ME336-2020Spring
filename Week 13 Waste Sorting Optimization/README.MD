@@ -97,7 +97,7 @@ Congratulations, you have now trained an object detector for waste sorting. Next
 
 Following the instructions to install [SDK](https://www.intelrealsense.com/sdk-2/) for realsense and install the python dependency.
 ``` bash
-pip install pyrealsense
+pip install pyrealsense2
 ```
 
 Connect the realsense D435 to your computer and run the following command
