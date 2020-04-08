@@ -36,7 +36,7 @@ export PYTHONPATH=$PYTHONPATH:`path-to-ME336/Week13 Waste Sorting Optimization`:
 ## Get Started
 
 ### Preparing Dataset
-Download the training dataset in png format from [Baidu Cloud Disk](https://pan.baidu.com/s/1phli_jXif7ozPMJ1Atv43Q) with 4fy5 and converting the dataset into tfrecord format. The codes will produce 5 files recyclable-trash-tfrecords-0*-of-05.tfrecord.
+Download the training dataset in png format from [Baidu Cloud Disk](https://pan.baidu.com/s/1phli_jXif7ozPMJ1Atv43Q) with 4fy5 and extract it under ./simple_recyclable. Then convert the dataset into tfrecord format. The codes will produce 5 files recyclable-trash-tfrecords-0*-of-05.tfrecord.
 
 ``` bash
 # from ME336/Week13 Waste Sorting Optimization/Haihua-Trash-Data
