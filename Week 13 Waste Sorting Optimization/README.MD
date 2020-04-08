@@ -36,7 +36,7 @@ export PYTHONPATH=$PYTHONPATH:`path-to-ME336/Week13 Waste Sorting Optimization`:
 ## Get Started
 
 ### Preparing Dataset
-Download the training dataset in png format under recyclable and converting the dataset into tfrecord format. The codes will produce 5 files recyclable-trash-tfrecords-0*-of-05.tfrecord.
+Download the training dataset in png format from [Baidu Cloud Disk](https://pan.baidu.com/s/1phli_jXif7ozPMJ1Atv43Q) with 4fy5 and converting the dataset into tfrecord format. The codes will produce 5 files recyclable-trash-tfrecords-0*-of-05.tfrecord.
 
 ``` bash
 # from ME336/Week13 Waste Sorting Optimization/Haihua-Trash-Data
@@ -46,8 +46,6 @@ python create_recyclabletrash_tf_record.py \
       --output_file_prefix="recyclable-trash-tfrecords" \
       --num_shards=5
 ```
-
-Or you can download the tfrecord files directly from [Baidu Cloud Disk](https://pan.baidu.com/s/1phli_jXif7ozPMJ1Atv43Q)
 
 ### Start train a waste detector using faster rcnn
 We finetune a faster rcnn model provided by the API. First Download the pretrained checkpoint and extract it.
