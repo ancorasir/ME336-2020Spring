@@ -18,7 +18,7 @@ align_to = rs.stream.color
 align = rs.align(align_to)
 
 
-from object_detection.object_detection_api_server import object_detection_api
+from object_detection.object_detection_api import object_detection_api
 detector = object_detection_api('exported_graphs')
 
 import time
@@ -35,9 +35,9 @@ while True:
     print("Time cost: %s"%dt)
     vis_util.visualize_boxes_and_labels_on_image_array(
         image_np,
-        output_dict['detection_boxes'],
-        output_dict['detection_classes'],
-        output_dict['detection_scores'],
+        np.array([output_dict['detection_boxes'][0]]),
+        np.array([output_dict['detection_classes'][0]]),
+        np.array([output_dict['detection_scores'][0]]),
         category_index,
         instance_masks=output_dict.get('detection_masks'),
         use_normalized_coordinates=True,

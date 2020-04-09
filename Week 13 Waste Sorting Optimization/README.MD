@@ -105,7 +105,9 @@ Connect the realsense D435 to your computer and run the following command
 # ME336/Week13 Waste Sorting Optimization/object_detection
 python object_detection_realsense.py
 ```
+You will have a real-time detecion window on your screen as below:
 
+![real-time detector](waste-sorting.gif)
 ## TODOs
 
 You are required to finetune your own model probablely from the [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md).
