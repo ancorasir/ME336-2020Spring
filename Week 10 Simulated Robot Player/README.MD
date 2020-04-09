@@ -1,1 +1,2 @@
 # Week 10 Simulated Robot Player
+In week 09 and 10, the students will apply their knowledge of robot simulation and computer vision to complete the project 2 of the course. The project aims to build a robot player of Tic-Tac-Toe in simulation.
