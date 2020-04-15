@@ -18,5 +18,5 @@ The V-rep Scene file has provide in [here](../Simulation/scene/Tic_tac_toe.ttt),
 
     Control robot to run on the trajectory that lead robot gripper grasp chess and release chess stable and robust.
 
-Please go the [Simulation folder](../Simulation/tasks/Tic_tac_toe/) for the detailed instructions. The following video is what you should have when complete the project.
+Please go the [Simulation folder](../Simulation) for the detailed instructions. The following video is what you should have when complete the project.
 ![img](bpqcy-gr0tw.gif)

@@ -38,18 +38,16 @@ The learning goals are listed below:
 - [ ] Install PyRep
 - [ ] Follow the tutorial to complete the kinematic Picking project.
 
-## Week 09 MDP with Tic-Tac-Toe (GeS)
-
-- [ ] Program a TicTacToe game using MDP or reinforcement learning methods.
-- [ ] Play with the program on the screen.
-
-
-## Week 10 Simulated Robot Player (GeS)
+## Week 09 Simulated Robot Player (GeS)
 
 - [ ] Program the TicTacToe game in PyRep simulation.
 - [ ] Provides complete video, codes and a 5-page report for the project.
 
-## Week 11 Introduction to DesignAIR (GeS+LiuXB)
+## Week 10 Simple Waste Classifier (WanF)
+
+- [ ] Train a simple waste classifier based on AlexNet.
+
+## Week 11 Introduction to DeepClaw and Claw Machine (GeS+LiuXB)
 
 - [ ] Read the instructions on how to use DesignAir
 - [ ] Complete the Arcade Claw machine tutorial
