@@ -1,4 +1,4 @@
-# Week 10 Simulated Robot Player
+# Week 09 Simulated Robot Player
 
 <img src="Tictactoe.jpeg" width = "300" height = "300"/>
 

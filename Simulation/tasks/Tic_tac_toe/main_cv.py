@@ -25,6 +25,7 @@ def chessboard_bias_position(action):
                         [[1,-1,0],  [1,0,0],  [1,1,0]]]).reshape((-1,3))[action]
     return a
 
+# TODO: complete the following function to detect the location of the chessboard and chess pieces from color image and depth images.
 def cv_get_position(img,depth_image):
     '''
     para
@@ -32,52 +33,28 @@ def cv_get_position(img,depth_image):
         img: np.ndarray type image
     return
     ---
-        tuple of O chesses, X chesses and chessboard
-        example: ([pos1, pos2, ...],[pos1, pos2, ...],pos)
-    help
-    ---
-    area
-        chess: ~=350
-        chessboard: ~= 27700
-    color
-        X chess: blue HSV:[120 255 255]
-        O chess: red HSV:[0 255 255]
-        backgroud: yellow BRG:[0 255 255] HSV:[30 255 255] HSV_range:([20 200 200],[40 255 255])
+        positions of O chesses, X chesses and chessboard
+        example: ([pos1, pos2, ...], [pos1, pos2, ...], pos)
     '''
 
-    # create binay image
-    upper_yellow = np.array([40, 255, 255])
-    lower_yellow = np.array([20, 200, 200])
-
-    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    bin = cv2.inRange(hsv, lower_yellow, upper_yellow)
-    bin = cv2.bitwise_not(bin)
     # find contours
-    contours, _ = cv2.findContours(bin, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    # cv2.drawContours(img, contours, -1, (0,255,0), 3)
-    X_chesses = []
-    O_chesses = []
-    for cnt in contours:
+    
         # filte by area
-        area = cv2.contourArea(cnt)
-        M = cv2.moments(cnt)
-        cx = int(M['m10']/M['m00'])
-        cy = int(M['m01']/M['m00'])
-        if area < 400:# chess
-            # filte by color
-            color = img[cy,cx]
-            hsv = cv2.cvtColor(np.array([[color]]), cv2.COLOR_BGR2HSV)
-            if cv2.inRange(hsv, np.array([100,200,200]), np.array([140,255,255]))[0][0]==255:# blue X
-                X_chesses.append((cam.H@cam.uv2XYZ(depth_image,cx,cy))[0:3])
-            else: # red O
-                O_chesses.append((cam.H@cam.uv2XYZ(depth_image,cx,cy))[0:3])
-        elif 20000 < area and area < 30000: # chessboard
-            chessboard = cam.H@cam.uv2XYZ(depth_image,cx,cy)
-    return O_chesses, X_chesses, chessboard[0:3]
 
-def move_chess_pipeline(chess_pos,chessboard_pos,action):
+            # filte by color
+
+                # transform the position of the chess with reference to the camera to the position with reference to the robot
+                # using the function: cam.H@cam.uv2XYZ(depth_image,cx,cy) where cx and cy are the pixel location of the chess in the color image
+
+
+    # return the positions in the following order
+    # O_chesses should be a list of posiitons like [[x1, y1, z1], [x2, y2, z2], ...], 
+    return O_chesses, X_chesses, chessboard
+
+def move_chess_pipeline(chess_pos, chessboard_pos, action):
     # get the pos to put
     put_pos = np.array(chessboard_pos) + chessboard_bias_position(action)
+    
     # get
     franka.clear_path = True
     chess_pos[2] += 0.1
@@ -100,21 +77,7 @@ def move_chess_pipeline(chess_pos,chessboard_pos,action):
     #put_pos[2] +=0.09
     #franka.move(env,put_pos,euler=[0,np.radians(180),0])
     franka.home(env)
-'''
-img = cv2.imread('img.png')
-env = Env(scene('Tic_tac_toe.ttt'))
-env.start()
-cam = Camera()
 
-depth_image = np.load('depth_img.npy')
-O_chesses, X_chesses, chessboard = cv_get_position(img,depth_image)
-print(chessboard)
-
-env.stop()
-env.shutdown()
-cv2.imshow('img',img)
-cv2.waitKey()
-'''
 if __name__ == "__main__":
     env = Env(scene('Tic_tac_toe.ttt'))
     env.start()
@@ -124,17 +87,20 @@ if __name__ == "__main__":
     # set franka to home joints 
     franka.home(env)
 
-    # cam 
+    # initiate the camera and get an color image and depth image
     cam = Camera()
     img = cam.capture_bgr()
     depth_img = cam.capture_depth(in_meters=True)
+
+    # TODO: detect the location of the chessboard and the chess pieces from the image
     O_chesses_pos, X_chesses_pos, chessboard_pos = cv_get_position(img,depth_img)
     
     # chessboard and chesses
     chesses_pos = {'X':X_chesses_pos,'O':O_chesses_pos}
     chesses = [Shape('chess_X'+str(chess_num)) for chess_num in range(1,6)]+\
               [Shape('chess_O'+str(chess_num)) for chess_num in range(1,6)]
-    # craete chessboard instance
+    
+    # create chessboard instance
     board = Board()
     
     # Decide who first (X always first)
@@ -203,22 +169,23 @@ if __name__ == "__main__":
             # move chess to chess board
             board._move(action,player_chess)
 
-            # get player chess
+            # get the player chess and ask the robot to execute the player's move
             chess = chesses_pos[player_chess][player_chess_count]
             player_chess_count += 1
             move_chess_pipeline(chess,chessboard_pos,action)
             turn = "AI"
 
         elif turn == "AI":
-            # think
+            # find the optimal move given the current board state using minimax
             action = ai.think(board)
             board._move(action,Ai_chess)
-            # get AI chess
-            
+
+            # get AI chess and let the robot execute its move
             chess = chesses_pos[Ai_chess][Ai_chess_count]
             Ai_chess_count += 1
             move_chess_pipeline(chess,chessboard_pos,action)
             turn = 'player'
+            
     input('Game over[Press Enter to quit]')
     env.stop()
     env.shutdown()
