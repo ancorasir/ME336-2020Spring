@@ -51,7 +51,7 @@ wget http://download.tensorflow.org/models/object_detection/faster_rcnn_resnet10
 tar -xvf faster_rcnn_resnet101_coco_2018_01_28.tar.gz
 ```
 
-Run the training script. The training configuration is in the file data_trash/faster_rcnn_resnet101_trash.config. Hyper parameters like number of classes, batch_size, learning rate, and training steps can be specified here.
+Run the training script. The training configuration is in the file data_trash/faster_rcnn_resnet101_trash.config. Hyper parameters like number of classes, batch_size, learning rate, and training steps can be specified here. The path to the tfrecord files is also specified there. Please remember to modify it according to your path.
 ``` bash
 # from ME336/Week13 Waste Sorting Optimization/object_detection
 python model_main.py \

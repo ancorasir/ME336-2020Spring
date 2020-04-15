@@ -46,7 +46,7 @@ flags.DEFINE_boolean(
     '(PNG encoded) in the result. default: False.')
 flags.DEFINE_string('image_dir', '/raid/wanfang/Documents/simple_recyclable', 'Directory containing images.')
 flags.DEFINE_string(
-    'image_info_file', '/raid/wanfang/Documents/simple_recyclable/train.json', 'File containing image information. '
+    'image_info_file', None, 'File containing image information. '
     'Tf Examples in the output files correspond to the image '
     'info entries in this file. If this file is not provided '
     'object_annotations_file is used if present. Otherwise, '
