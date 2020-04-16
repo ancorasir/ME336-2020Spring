@@ -19,9 +19,6 @@ def scene(scene_file_name):
     return scene_path + scene_file_name
 
 def franka_move(start, target, grasp_pose):
-    
-    # print('start:',start)
-    # print('target:',target)
     franka.clear_path = True
     start[2] += 0.1
     franka.move(env,start,euler=[0,np.radians(180),grasp_pose])
@@ -30,7 +27,6 @@ def franka_move(start, target, grasp_pose):
     
     for toy in toys:
         if franka.gripper._proximity_sensor.is_detected(toy):
-            # print(toy.get_position())
             franka.grasp(env,toy)
             break
         if toy is toys[-1]:
@@ -39,13 +35,8 @@ def franka_move(start, target, grasp_pose):
     franka.move(env,start,euler=[0,np.radians(180),grasp_pose])
     franka.home(env)
     a = copy.copy(franka.home_joints)
-    #start[2] += 0.06
-    #franka.move(env,start,euler=[0,np.radians(180),0])
     a[0] += np.pi/2
     franka.move_j(a,env)
-    #target[2] += 0.1
-    #franka.move(env,target,euler=[0,np.radians(180),0]) 
-
     franka.release(env)
     franka.home(env)
     
@@ -58,13 +49,10 @@ if __name__ == '__main__':
 
     # franka
     franka = Franka()
-    # set franka to home joints
-    franka.home(env)
-
+    
     # cam 
     cam = Camera()
 
-    depth_image = cam.capture_depth(in_meters=True)
     # toys
     Bird = Shape('Bird')
     Hipp = Shape('Hipp')
@@ -75,6 +63,15 @@ if __name__ == '__main__':
     toys = [Bird, Hipp, Elephant, Penguin]
     dest_position = box_dest.get_position()
 
+    # random exchange the position of toys
+    toy_positions = [toy.get_position() for toy in toys]
+    arr = np.arange(len(toys))
+    np.random.shuffle(arr)
+    [toys[i].set_position(toy_positions[arr[i]]) for i in range(len(toys))]
+
+    # set franka to home joints
+    franka.home(env)
+    
     end = False
     while not end:
         img = cam.capture_bgr()
@@ -98,4 +95,4 @@ if __name__ == '__main__':
 
     env.stop()
     env.shutdown()
-
+    
