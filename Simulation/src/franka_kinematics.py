@@ -5,7 +5,6 @@ import time
 from pyrep.errors import ConfigurationError, ConfigurationPathError, IKError
 from scipy.spatial.transform import Rotation
 
-
 def get_rotation_part(H):
     return H[0:3,0:3]
 
@@ -138,7 +137,6 @@ class FrankaKinematics():
             return res.x
         else:
             raise IKError('d')
-
 if __name__ == "__main__":
     franka = FrankaKinematics()
     start = time.time()
@@ -159,4 +157,4 @@ if __name__ == "__main__":
     end = time.time()
     print((end-start)/100)
     #print(res)
-    #print(franka.fk(res))
+    print(franka.fk([0,0,0,0,0,0,0]))

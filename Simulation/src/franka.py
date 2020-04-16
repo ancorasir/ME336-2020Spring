@@ -26,14 +26,19 @@ class Franka(Panda):
         self.gripper = PandaGripper()
         self.clear_path = False
         
-    def grasp(self,env,obj:None):
+    def grasp(self,env,obj:None,force_mode=False):
         '''
         gripper grasp
         '''
         while not self.gripper.actuate(0.0,0.1):
             env.step()
         self.grasped_obj = obj
-        self.gripper.grasp(obj)
+        if force_mode:
+            self.gripper._grasped_objects.append(self.grasped_obj)
+            self.gripper._old_parents.append(self.grasped_obj.get_parent())  # type: ignore
+            self.obj.set_parent(self.gripper._attach_point, keep_in_place=True)
+        else:
+            self.gripper.grasp(self.grasped_obj)
 
     def release(self,env):
         '''
@@ -115,9 +120,11 @@ class Franka(Panda):
             quaternion: Union[List[float], np.ndarray] = None):
         path = self.get_path(
             position=position, euler=euler, quaternion = quaternion)
+        if path is None:
+            raise RuntimeError('no path found')
         path.visualize()
         env.step()
-
+        
         # Step the simulation and advance the agent along the path
         done = False
         while not done:
@@ -171,6 +178,7 @@ class Franka(Panda):
                 trials_per_goal, algorithm)
             return p
         except ConfigurationPathError:
+            print('get nonlinear path fail\n')
             #p = self._get_nonlinear_path(position,euler,quaternion)
             #return p
             pass
