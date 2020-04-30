@@ -2,7 +2,6 @@ from os.path import dirname, abspath
 from os import system, environ
 sim_path = dirname(dirname(dirname(dirname(abspath(__file__)))))
 scene_path = sim_path + '/Simulation/scene/'
-
 import sys
 sys.path.append(sim_path)
 from Simulation.src.camera import Camera
@@ -19,12 +18,12 @@ def scene(scene_file_name):
     # return abs dir of scene file 
     return scene_path + scene_file_name
 
-def franka_move(start, target, angle):
+def franka_move(start, target, grasp_pose):
     franka.clear_path = True
     start[2] += 0.1
-    franka.move(env,start,euler=[0,np.radians(180),angle])
+    franka.move(env,start,euler=[0,np.radians(180),grasp_pose])
     start[2] -= 0.07
-    franka.move(env,start,euler=[0,np.radians(180),angle])
+    franka.move(env,start,euler=[0,np.radians(180),grasp_pose])
     
     success = False
     for toy in toys:
@@ -35,19 +34,16 @@ def franka_move(start, target, angle):
     if not success:
         print("Fail to grasp the toy!")
     start[2] += 0.07
-    franka.move(env,start,euler=[0,np.radians(180),angle])
+    franka.move(env,start,euler=[0,np.radians(180),grasp_pose])
     franka.home(env)
     a = copy.copy(franka.home_joints)
     a[0] += np.pi/2
     franka.move_j(a,env)
     franka.release(env)
     franka.home(env)
-
-# TODO: initiate grasp predictor here, the provided model with weight has 18 classes    
-# The predictor can accept the custom image size at initialization, remember to resize your image according to this shape.
-# You can use the default image size.
-# predictor = ...
-
+    
+NUM_THETAS = 9
+predictor = FCPredictor(NUM_THETAS*2, './checkpoint_softgripper_Network9/Network9-1000-100')
 
 if __name__ == '__main__':
     env = Env(scene('Claw_machine.ttt'))
@@ -78,40 +74,28 @@ if __name__ == '__main__':
     # set franka to home joints
     franka.home(env)
     
-    # TODO: complete the detection and grasp pipeline in the while loop.
+    end = False
     print("=========================Start picking...")
-    while True:
-        # TODO: capture rbg image
-
-
-        # TODO: crop the image so that you only feed the region of interest to the neural network
-        
-        
-        # TODO: resize you region of interest according to your predictor
-        
-
-        # TODO: feed the cropped image to the predictor and obtain the best grasping pixel x, y and rotation angle
-        
-
-        # TODO: compute the gasping pixel in the original image cx, cy and the success probability
-
-
-        # We add a criteria to stop the simulation if the predictor fail to find 
-        # any good grasp with success probability > 0.8
+    while not end:
+        img = cam.capture_bgr()
+        ros = img[41:299,114:372] # (258, 258)
+        depth_image = cam.capture_depth(in_meters=True)
+        ros = cv2.resize(ros, (1280, 720), interpolation=cv2.INTER_CUBIC)
+        y_, p_best, grasp_pose = predictor.run(ros)
+        x,y,angle = grasp_pose
+        possi = p_best.max()
+        print('Sucsess possibility:',possi)
         if possi < 0.8:
             print("Fail to find good grasp, ending the simulation")
             break
-        
-        # TODO: transform u, v, z to x, y, z, you might need to set the z to 1.123 mannually for success path planning.
-
-
-        # visualize the prasping point in the simulation
-        target.set_position(grasp_position)
+        cx,cy = int(x*258/1280+114),int(y*258/720+41) # u:cy, v:cx
+        # print(x,y,cx,cy)
+        real_position = (cam.H@cam.uv2XYZ(depth_image,cx,cy))[0:3]
+        real_position[2] = 1.123
+        target.set_position(real_position)
         cv2.circle(img,(cx,cy),5,(0,0,255),5)
         cv2.circle(ros,(x,y),5,(0,0,255),5)
-
-        # move the robot to execute the grasp
-        franka_move(grasp_position, place_position, angle) 
+        franka_move(real_position, place_position, grasp_pose[2]) 
 
     env.stop()
     env.shutdown()

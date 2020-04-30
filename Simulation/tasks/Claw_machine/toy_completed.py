@@ -41,7 +41,7 @@ def franka_move(start, target, grasp_pose):
     franka.home(env)
     
 NUM_THETAS = 9
-predictor = FCPredictor(NUM_THETAS*2, './net9/Network9-1000-100')
+predictor = FCPredictor(NUM_THETAS*2, './checkpoint_softgripper_Network9/Network9-1000-100')
 
 if __name__ == '__main__':
     env = Env(scene('Claw_machine.ttt'))
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     box_dest = Shape('box_dest')
     target = Shape('Sphere')
     toys = [Bird, Hipp, Elephant, Penguin]
-    dest_position = box_dest.get_position()
+    place_position = box_dest.get_position()
 
     # random exchange the position of toys
     toy_positions = [toy.get_position() for toy in toys]
@@ -91,7 +91,7 @@ if __name__ == '__main__':
         target.set_position(real_position)
         cv2.circle(img,(cx,cy),5,(0,0,255),5)
         cv2.circle(ros,(x,y),5,(0,0,255),5)
-        franka_move(real_position, dest_position, grasp_pose[2]) 
+        franka_move(real_position, place_position, grasp_pose[2]) 
 
     env.stop()
     env.shutdown()
