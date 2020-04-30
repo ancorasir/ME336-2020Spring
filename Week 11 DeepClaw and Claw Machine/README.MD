@@ -1,18 +1,18 @@
 # Week 11 Introduction to DeepClaw
 
-In week 11, students will learn the basic idea of Deepclaw. And then students are required to implement a smart claw machine in V-rep.
+In week 11, students will learn the basic idea of Deepclaw. And then students are required to implement a smart claw machine in CoppeliaSim.
 
 ## DeepClaw basics
+
+Please refer to the github repository of [DeepClaw](https://github.com/bionicdl-sustech/DeepClawBenchmark) for more information. 
+
+DeepClaw is a benchmarking system for robot manipulation designed to be modularized, extendable, and easy to use on real robots and the environment, provided by the BionicDL lab at SUSTECH. Due to COVID-19, the students are not required to do their projects on real robots using DeepClaw. But you are encourage to read the github page and get familiar with the pipelines of robotic applications.
 
 ## Claw machine
 
 ![img](./Claw_machine.jpeg)
 
-You have to program your franka robot to claw the toys in front of the robot and put toy to a box next to robot.
-
-Please use graspNet model in DeepClaw, this is a end2end model that take a 1280*720 image as input and output the best position and pose to pick.
-
-'.ttt' Scene file was provide [here](../Simulation/scene/Claw_machine.ttt)
+You have to program your franka robot to claw the toys in front of the robot and put toy to a box next to robot. Please refer to the readme under ME336/Simulation for more instructions on completing project 3.
 
 [Here](./Claw_machine_presentation_1.mp4) is a example of this project
 
@@ -31,7 +31,3 @@ while True:
     # compute from u,v and depth-image to real world position 
     # robot move pipeline
 ```
-
-### small hint
-
-if you move the franka tip to the surface of toy, franka will always can't get the path, so you can elevate your gripper a little, don't worry the gripper can not grasp the object.

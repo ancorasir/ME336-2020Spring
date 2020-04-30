@@ -2,7 +2,6 @@ from os.path import dirname, abspath
 from os import system, environ
 sim_path = dirname(dirname(dirname(dirname(abspath(__file__)))))
 scene_path = sim_path + '/Simulation/scene/'
-
 import sys
 sys.path.append(sim_path)
 from Simulation.src.camera import Camera
@@ -40,9 +39,9 @@ def franka_move(start, target, grasp_pose):
     franka.move_j(a,env)
     franka.release(env)
     franka.home(env)
-
-# TODO: initiate grasp predictor here, the provided model with weight has 18 classes    
-# predictor = ...
+    
+NUM_THETAS = 9
+predictor = FCPredictor(NUM_THETAS*2, './net9/Network9-1000-100')
 
 if __name__ == '__main__':
     env = Env(scene('Claw_machine.ttt'))
@@ -73,16 +72,10 @@ if __name__ == '__main__':
     # set franka to home joints
     franka.home(env)
     
-    # TODO: complete the detection and grasp pipeline in the while loop.
     end = False
     while not end:
-        # capture image
         img = cam.capture_bgr()
-
-        # crop the image so that you only feed the region of interest to the neural network
-        # this will reduce the computation cost of the CNN model
         ros = img[41:299,114:372] # (258, 258)
-        
         depth_image = cam.capture_depth(in_meters=True)
         ros = cv2.resize(ros, (1280, 720), interpolation=cv2.INTER_CUBIC)
         y_, p_best, grasp_pose = predictor.run(ros)
