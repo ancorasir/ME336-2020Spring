@@ -8,6 +8,8 @@ We will do our project 1 Kinematic Picking, project 2 Simulated Robot Player and
     - [Explanation of the main code](#explanation-of-the-main-code)
     - [TODO: your assignment](#todo-your-assignment)
   - [Project 2: Simulated Robot Player](#project-2-simulated-robot-player)
+  - [Project 3: Claw Machine](#Project-3-Claw-Machine)
+
 
 ## File Structure
 
