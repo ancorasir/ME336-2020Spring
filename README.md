@@ -1,9 +1,9 @@
 # ME336
-This is the projects folder for course ME336, which is based on DeepClaw. The projects consist of experimental learning contents from week06 to week16. We will release new contents in this folder before the class, so please visit the repository to get updated. The task to be completed in each week is listed below. Please refer to the subfolders for more detailed instructions.
+This is the projects folder for course ME336, which is based on DeepClaw. The projects consist of experimental learning contents from week06 to week16. We will release new contents in this folder before the class, so please visit the repository to get updated. The task to be completed in each week is listed below. Please refer to the subfolders for more detailed instructions. Supplementary data and pretrained model can be downloaded from Baidu disk:
+
+链接: https://pan.baidu.com/s/1YlTTVqXheK-27PvgyhG9ZA 提取码: pzdr 
 
 ## DeepClaw (fork from WangHK backbone)
-
-DeepClaw[./DeepClaw] is a
 
 ## DesignAIR_simulation (GeS)
 
